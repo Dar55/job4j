@@ -1,11 +1,11 @@
-package ru.job4j.calculate;
-/** Класс Calculate
+п»їpackage ru.job4j.calculate;
+/** РљР»Р°СЃСЃ Calculate
 *
 *
 *
 */
 public class Calculate {
-/** Метод Main
+/** РњРµС‚РѕРґ Main
 *
 *
 *
