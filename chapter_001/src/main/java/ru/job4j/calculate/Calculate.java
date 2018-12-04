@@ -4,6 +4,7 @@ package ru.job4j.calculate;
 * @since 12.11.2018
 * @version 1
 */
+
 public class Calculate {
 /** 
 * Конструктор, вывод строки в консоль
@@ -11,5 +12,13 @@ public class Calculate {
 */
 	public static void main(String[] args) {
 		System.out.println("Hello World");
+	}
+	/**
+     * Method echo.
+     * @param name Валерий Васьков.
+     * @return Echo Валерий Васьков.
+     */
+	public String echo(String name) {
+    return "Echo, echo, echo : " + name;
 	}
 }
