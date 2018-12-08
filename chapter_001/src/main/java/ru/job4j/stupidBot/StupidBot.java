@@ -6,11 +6,12 @@ package ru.job4j.stupidBot;
      * @since 0.1
      */
     public class StupidBot {
-        /**
-         * Отвечает на вопросы.
-         * @param question Вопрос от клиента.
-         * @return Ответ.
-         */
+     /**
+     * Отвечает на вопросы.
+     * @param question Вопрос от клиента.
+     * @return Ответ.
+     */
+
         public String answer(String question) {
             String rsl = "Это ставит меня в тупик. Спросите другой вопрос.";
             if ("Привет, Бот.".equals(question)) {
