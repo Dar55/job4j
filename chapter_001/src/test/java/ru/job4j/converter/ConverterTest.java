@@ -21,7 +21,7 @@ public class ConverterTest {
     @Test
     public void when60RubleToDollarThen2() {
         Converter converter = new Converter();
-        int result = converter.DollarToRubble(1);
+        int result = converter.dollarToRubble(1);
         assertThat(result, is(60));
     }
 

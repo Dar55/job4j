@@ -12,7 +12,7 @@ package ru.job4j.converter;
          * @return Евро.
          */
         public int rubleToEuro(int value) {
-            return value/70;
+            return value / 70;
         }
 
         /**
@@ -21,7 +21,7 @@ package ru.job4j.converter;
          * @return Доллары
          */
         public int rubleToDollar(int value) {
-            return value/60;
+            return value / 60;
         }
         /**
          * Конвертируем евро в рубли.
@@ -29,7 +29,7 @@ package ru.job4j.converter;
          * @return рубли.
          */
         public int euroToRubble(int value) {
-            return value*70;
+            return value * 70;
         }
 
         /**
@@ -37,7 +37,7 @@ package ru.job4j.converter;
          * @param value доллары.
          * @return рубли
          */
-        public int DollarToRubble(int value) {
-            return value*60;
+        public int dollarToRubble(int value) {
+            return value * 60;
         }
 }
