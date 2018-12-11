@@ -17,7 +17,7 @@ import static org.junit.Assert.assertThat;
          assertThat(result, is(3));
      }
      @Test
-     public void chooseBetweenThreemMaxThree() {
+     public void chooseBetweenThremMaxThree() {
          Max maxim = new Max();
          int result = maxim.max(3, 1, 5);
          assertThat(result, is(5));
