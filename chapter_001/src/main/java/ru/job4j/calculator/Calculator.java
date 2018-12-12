@@ -40,7 +40,7 @@ public class Calculator {
      * @param second  Делитель
      * @return Результат деления
      */
-    public void div(double first,double second) {
+    public void div(double first, double second) {
         this.result = first / second;
     }
     public double getResult() {

@@ -1,4 +1,4 @@
-package ru.job4j.stupidBot;
+package ru.job4j.stupidbot;
 
     /**
      * @author Valeriy Vaskov (dar55@yandex.ru)

@@ -1,4 +1,4 @@
-package ru.job4j.stupidBot;
+package ru.job4j.stupidbot;
 
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
