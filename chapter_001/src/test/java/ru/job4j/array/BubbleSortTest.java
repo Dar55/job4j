@@ -12,6 +12,5 @@ public class BubbleSortTest {
         BubbleSort result = new BubbleSort();
         int[] resul = result.sort(input);
         assertThat(resul, is(wait));
-        //напишите здесь тест, проверяющий сортировку массива из 10 элементов методом пузырька, например {1, 5, 4, 2, 3, 1, 7, 8, 0, 5}.
     }
 }
