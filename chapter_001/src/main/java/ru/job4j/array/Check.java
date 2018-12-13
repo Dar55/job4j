@@ -14,7 +14,7 @@ package ru.job4j.array;
         boolean result = true;
         boolean b = data[0];
         for (boolean count:data) {
-            if(b != count) {
+            if (b != count) {
                 result = false;
                 break;
             }

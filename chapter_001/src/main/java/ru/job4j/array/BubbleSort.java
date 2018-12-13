@@ -12,7 +12,7 @@ public class BubbleSort {
      */
     public int[] sort(int[] array) {
         int temp;
-        for (int count1 = array.length;count1 > 0;count1--) {
+        for (int count1 = array.length; count1 > 0; count1--) {
             for (int count = 0; count < count1 - 1; count++) {
                 if (array[count] > array[count + 1]) {
                     temp = array[count + 1];
