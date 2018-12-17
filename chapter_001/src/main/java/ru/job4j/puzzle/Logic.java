@@ -71,32 +71,27 @@ public class Logic {
         boolean result = false;
         int i;
         int im, in, k, ip;
-        {
-            for (ip = 0; ip < table.length; ip++) {
-                i = 0;
-                for (in = 0; in < table.length; in++) {
-                    if ((table[ip][in] == 1)) {
-                        i++;
-                        if (ip == 0) {
-                            k = 1;
-                            for (im = 1; im < table.length; im++) {
-                                if (table[im][in] == 1) {
-                                    k++;
-                                }
-                            }
-                            if (k == table.length) {
-                                result = true;
-                                break;}
-                        }
-                    }
-                    if (i == table.length) {
-                        result = true;
-                        break;
-                    }
+        for (ip = 0; ip < table.length; ip++) {
+            i = 0;
+            k = 0;
+            for (in = 0; in < table.length; in++) {
+                if ((table[ip][in] == 1)) {
+                    i++;
+                }
+                if ((table[in][ip] == 1)) {
+                    k++;
                 }
             }
-            return result;
+            if (k == table.length) {
+                result = true;
+                break;
+            }
+            if (i == table.length) {
+                result = true;
+                break;
+            }
         }
+        return result;
     }
 
     public int[][] convert() {
