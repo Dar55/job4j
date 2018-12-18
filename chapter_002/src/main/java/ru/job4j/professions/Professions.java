@@ -1,7 +1,8 @@
 package ru.job4j.professions;
 
 public class Professions {
-    String name, profession;
+    private String name, profession;
+    Professions(String name, String profession){}
     public String getName(){
         return name;
     }

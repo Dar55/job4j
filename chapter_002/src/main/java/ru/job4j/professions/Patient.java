@@ -1,6 +1,8 @@
 package ru.job4j.professions;
 
 public class Patient {
-   String name;
+   private String name;
+   Patient(String name){}
+
 }
 
