@@ -24,9 +24,17 @@ public class Tracker {
         this.items[this.position++] = item;
         return item;
     }
-//    public void replace(String id, Item item){
+    public void replace(String id, Item item){
 
-  //  }
+        for (Item item1 : items) {
+            if (item1 != null && item.getId().equals(id)) {
+                item1 = item;
+                break;
+            }
+        }
+
+    return item;
+   }
  //   public void delete(String id){
 
   //  }
@@ -46,13 +54,16 @@ public class Tracker {
         }
             return result;
     }
-     /**
-     * Метод генерирует уникальный ключ для заявки.
-     * Так как у заявки нет уникальности полей, имени и описание. Для идентификации нам нужен уникальный ключ.
-     * @return Уникальный ключ.
-     */
+
     public String generateId() {
-        return String.valueOf(System.currentTimeMillis() + this.RN.nextInt(100));
+        return String.valueOf(System.currentTimeMillis() + RN.nextInt(100));
+    }
+    public Item[] getAll() {
+        Item[] result = new Item[this.position];
+        for (int index = 0; index != this.position;index++){
+            result[index] = this.items[index];
+        }
+        return result;
     }
 }
 

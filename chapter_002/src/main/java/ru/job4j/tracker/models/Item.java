@@ -12,6 +12,9 @@ public class Item {
         this.create = create;
     }
 
+    public Item() {
+    }
+
     public String getName() {
         return this.name;
     }
