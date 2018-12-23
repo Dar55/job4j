@@ -25,19 +25,28 @@ public class Tracker {
         return item;
     }
     public void replace(String id, Item item){
-
-        for (Item item1 : items) {
-            if (item1 != null && item.getId().equals(id)) {
-                item1 = item;
+        int i = 0;
+        for (Item itemAm : items) {
+            if (itemAm != null && itemAm.getId().equals(id)) {
+                this.items[i] = item;
                 break;
             }
+            i++;
         }
 
-    return item;
+    }
+   public void delete(String id){
+       int i = 0;
+       int n = 0;
+       for (Item itemAm : items) {
+           if (itemAm != null && itemAm.getId().equals(id)) {
+               n = 1;
+           }
+           if (n == 1) {
+               this.items[i] = this.items[i+1];
+           }
+           i++;
    }
- //   public void delete(String id){
-
-  //  }
   //  public  findAll(String id){
 
   //  }
@@ -49,6 +58,7 @@ public class Tracker {
         for (Item item : items) {
             if (item != null && item.getId().equals(id)) {
                 result = item;
+                item.
                 break;
             }
         }
