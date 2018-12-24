@@ -10,7 +10,6 @@ public class Tracker {
     /**
      * Массив для хранение заявок.
      */
-
     private final Item[] items = new Item[100];
     private int position = 0;
     private static final Random RN = new Random();
@@ -24,6 +23,11 @@ public class Tracker {
         this.items[this.position++] = item;
         return item;
     }
+    /**
+     * Метод реализаущий замену заявки в массиве
+     * @param item новая заявка
+     * @param id уникальный номер заявки, которую правим
+     */
     public void replace(String id, Item item){
         for (int i = 0;i < items.length;i++ ) {
             if (this.items[i] != null && this.items[i].getId().equals(id)) {
@@ -34,6 +38,10 @@ public class Tracker {
         }
 
     }
+    /**
+     * Метод реализаущий удаление заявки в массиве
+     * @param id уникальный номер заявки, которую удаляем
+     */
    public void delete(String id){
        int n = 0;
        for (int i = 0;i < items.length;i++ ) {
@@ -49,35 +57,41 @@ public class Tracker {
            System.arraycopy(this.items, 1, this.items, 0, items.length-1);
        }
    }
-
+    /**
+     * Поиск по имени
+     * @param key имя заявки
+     */
     public Item findByName(String key){
         Item result = null;
         for (Item item : items) {
-            if (item.getName().equals(key)) {
+            if (item != null && item.getName().equals(key)) {
                 result = item;
             }
         }
         return result;
    }
-   //item != null &&
+    /**
+     * Поиск по id
+     * @param id имя заявки
+     */
     public Item findById(String id) {
         Item result = null;
 
         for (Item item : items) {
-            System.out.println(item.getId());
             if (item != null && item.getId().equals(id)) {
                 result = item;
-                System.out.println(result);
                 break;
             }
         }
-        //System.out.println(result);
         return result;
     }
 
     public String generateId() {
         return String.valueOf(System.currentTimeMillis() + RN.nextInt(100));
     }
+    /**
+     * Поиск всех ненулевых заявок
+     */
     public Item[] findAll() {
         Item[] result = new Item[this.position];
         for (int index = 0; index != this.position;index++){

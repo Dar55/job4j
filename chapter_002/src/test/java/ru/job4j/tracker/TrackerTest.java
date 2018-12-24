@@ -4,6 +4,7 @@ import  ru.job4j.tracker.models.*;
 import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertNull;
 
 public class TrackerTest {
     @Test
@@ -23,17 +24,36 @@ public class TrackerTest {
         tracker.replace(previous.getId(), next);
         assertThat(tracker.findById(previous.getId()).getName(), is("test2"));
     }
+    /*
+     Тестируем сразу два метода, сначала на поиск по имени, потом поиск по вйди,
+     т.к. я так и не придумал, как добраться до автоматически генерируемого ID, после нахождения ID
+     по этому ID ищем элемент.
+     */
     @Test
     public void whenFindItembyId() {
         Tracker tracker = new Tracker();
         Item item = new Item("test1","testDescription",123L);
         Item item1 = new Item("test2","testDescription",1234L);
         Item item2 = new Item("test3","testDescription",12345L);
-        item1.setId("dddd");
         tracker.add(item);
         tracker.add(item1);
         tracker.add(item2);
-        String s = tracker[1]
-        assertThat(tracker.findById(S), is(item2));
+        Item find = tracker.findByName("test1");
+        String S = find.getId();
+        assertThat(tracker.findById(S).getName(), is("test1"));
+    }
+    @Test
+    public void whenDelete() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("test1","testDescription",123L);
+        Item item1 = new Item("test2","testDescription",1234L);
+        Item item2 = new Item("test3","testDescription",12345L);
+        tracker.add(item);
+        tracker.add(item1);
+        tracker.add(item2);
+        Item find = tracker.findByName("test1");
+        String S = find.getId();
+        tracker.delete(S);
+        assertNull(tracker.findByName("test1"));
     }
 }
