@@ -25,9 +25,8 @@ public class Tracker {
         return item;
     }
     public void replace(String id, Item item){
-        int i = 0;
-        for (Item itemAm : items) {
-            if (itemAm != null && itemAm.getId().equals(id)) {
+        for (int i = 0;i < items.length;i++ ) {
+            if (this.items[i] != null && this.items[i].getId().equals(id)) {
                 this.items[i] = item;
                 break;
             }
@@ -36,39 +35,50 @@ public class Tracker {
 
     }
    public void delete(String id){
-       int i = 0;
        int n = 0;
-       for (Item itemAm : items) {
-           if (itemAm != null && itemAm.getId().equals(id)) {
+       for (int i = 0;i < items.length;i++ ) {
+           if (this.items[i] != null && this.items[i].getId().equals(id)) {
                n = 1;
            }
-           if (n == 1) {
-               this.items[i] = this.items[i+1];
+           if((n == 1) && (i == items.length - 2)){
+               this.items[i] = this.items[i + 1];
            }
            i++;
+       }
+       if(n == 1){
+           System.arraycopy(this.items, 1, this.items, 0, items.length-1);
+       }
    }
-  //  public  findAll(String id){
 
-  //  }
-  //  public findByName(String id){
-//
-   // }
-    public Item findById(String id) {
+    public Item findByName(String key){
         Item result = null;
         for (Item item : items) {
+            if (item.getName().equals(key)) {
+                result = item;
+            }
+        }
+        return result;
+   }
+   //item != null &&
+    public Item findById(String id) {
+        Item result = null;
+
+        for (Item item : items) {
+            System.out.println(item.getId());
             if (item != null && item.getId().equals(id)) {
                 result = item;
-                item.
+                System.out.println(result);
                 break;
             }
         }
-            return result;
+        //System.out.println(result);
+        return result;
     }
 
     public String generateId() {
         return String.valueOf(System.currentTimeMillis() + RN.nextInt(100));
     }
-    public Item[] getAll() {
+    public Item[] findAll() {
         Item[] result = new Item[this.position];
         for (int index = 0; index != this.position;index++){
             result[index] = this.items[index];
