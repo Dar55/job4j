@@ -38,8 +38,8 @@ public class TrackerTest {
         tracker.add(item);
         tracker.add(item1);
         tracker.add(item2);
-        Item find = tracker.findByName("test1");
-        String S = find.getId();
+        Item[] find = tracker.findByName("test1");
+        String S = find[0].getId();
         assertThat(tracker.findById(S).getName(), is("test1"));
     }
     @Test
@@ -51,9 +51,9 @@ public class TrackerTest {
         tracker.add(item);
         tracker.add(item1);
         tracker.add(item2);
-        Item find = tracker.findByName("test1");
-        String S = find.getId();
+        Item[] find = tracker.findByName("test2");
+        String S = find[0].getId();
         tracker.delete(S);
-        assertNull(tracker.findByName("test1"));
+       assertNull(tracker.findById(S));
     }
 }

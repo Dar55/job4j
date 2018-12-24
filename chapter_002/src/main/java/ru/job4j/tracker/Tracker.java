@@ -34,41 +34,35 @@ public class Tracker {
                 this.items[i] = item;
                 break;
             }
-            i++;
         }
-
     }
     /**
      * Метод реализаущий удаление заявки в массиве
      * @param id уникальный номер заявки, которую удаляем
      */
-   public void delete(String id){
+   public void delete(String id) {
        int n = 0;
-       for (int i = 0;i < items.length;i++ ) {
+       for (int i = 0; i < position; i++) {
            if (this.items[i] != null && this.items[i].getId().equals(id)) {
-               n = 1;
+               System.arraycopy(this.items, i + 1 , this.items, i  , position - i );
+               this.position = this.position - 1;
+               break;
            }
-           if((n == 1) && (i == items.length - 2)){
-               this.items[i] = this.items[i + 1];
-           }
-           i++;
-       }
-       if(n == 1){
-           System.arraycopy(this.items, 1, this.items, 0, items.length-1);
        }
    }
     /**
      * Поиск по имени
      * @param key имя заявки
      */
-    public Item findByName(String key){
-        Item result = null;
-        for (Item item : items) {
-            if (item != null && item.getName().equals(key)) {
-                result = item;
+    public Item[] findByName(String key){
+        int b = 0;
+        Item[] result = new Item[this.position];
+        for (int index = 0; index != this.position;index++){
+            if (this.items[index].getName().equals(key)) {
+                result[b++] = this.items[index];
             }
         }
-        return result;
+        return Arrays.copyOf(result, b);
    }
     /**
      * Поиск по id
@@ -93,11 +87,7 @@ public class Tracker {
      * Поиск всех ненулевых заявок
      */
     public Item[] findAll() {
-        Item[] result = new Item[this.position];
-        for (int index = 0; index != this.position;index++){
-            result[index] = this.items[index];
-        }
-        return result;
+         return Arrays.copyOf(this.items, this.position);
     }
 }
 
