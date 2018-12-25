@@ -28,27 +28,33 @@ public class Tracker {
      * @param item новая заявка
      * @param id уникальный номер заявки, которую правим
      */
-    public void replace(String id, Item item){
-        for (int i = 0;i < items.length;i++ ) {
-            if (this.items[i] != null && this.items[i].getId().equals(id)) {
+    public boolean replace(String id, Item item){
+        boolean result = false;
+        for (int i = 0;i < position; i++ ) {
+            if (this.items[i].getId().equals(id)) {
+                result = true;
                 this.items[i] = item;
                 break;
             }
         }
+        return result;
     }
     /**
      * Метод реализаущий удаление заявки в массиве
      * @param id уникальный номер заявки, которую удаляем
      */
-   public void delete(String id) {
+   public boolean delete(String id) {
        int n = 0;
+       boolean result = false;
        for (int i = 0; i < position; i++) {
-           if (this.items[i] != null && this.items[i].getId().equals(id)) {
+           if (this.items[i].getId().equals(id)) {
                System.arraycopy(this.items, i + 1 , this.items, i  , position - i );
                this.position = this.position - 1;
+               result = true;
                break;
            }
        }
+       return result;
    }
     /**
      * Поиск по имени
@@ -80,7 +86,7 @@ public class Tracker {
         return result;
     }
 
-    public String generateId() {
+    private String generateId() {
         return String.valueOf(System.currentTimeMillis() + RN.nextInt(100));
     }
     /**
