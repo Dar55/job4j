@@ -15,16 +15,15 @@ public class AdditionaTask {
                     array3[s++] = array2[j++];
                 }
             }
-        if(i < array1.length) {
+        if (i < array1.length) {
             for (b = i; b < array1.length; b++) {
                 array3[s++] = array1[b];
             }
-        }
-         else if(j < array2.length) {
-                for (b = j; b < array2.length; b++){
+        } else if (j < array2.length) {
+                for (b = j; b < array2.length; b++) {
                     array3[s++] = array2[b];
                 }
-            }
+        }
 
         return array3;
     }

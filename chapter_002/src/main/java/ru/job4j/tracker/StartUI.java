@@ -11,8 +11,8 @@ public class StartUI {
     private static final String SHOW = "1";
     private static final String EDIT = "2";
     private static final String DELETE = "3";
-    private static final String FINDbyNAME = "5";
-    private static final String FINDbyID = "4";
+    private static final String FINDBYNAME = "5";
+    private static final String FINDBYID = "4";
     private static final String EXIT = "6";
     private final Input input;
     private final Tracker tracker;
@@ -39,13 +39,13 @@ public class StartUI {
                 this.createItem();
             } else if (SHOW.equals(answer)) {
                 this.showItems();
-            } else if (EDIT.equals(answer)){
+            } else if (EDIT.equals(answer)) {
                 this.editItem();
             } else if (DELETE.equals(answer)) {
                 this.deleteItem();
-            } else if (FINDbyNAME.equals(answer)) {
+            } else if (FINDBYNAME.equals(answer)) {
                 this.findItembyName();
-            } else if (FINDbyID.equals(answer)) {
+            } else if (FINDBYID.equals(answer)) {
                 this.findItembyID();
             } else if (EXIT.equals(answer)) {
                 exit = true;
@@ -67,13 +67,13 @@ public class StartUI {
     /**
      * Метод реализует показ всех ненулевых итемов
      */
-    private void showItems(){
+    private void showItems() {
         Item[] items = this.tracker.findAll();
-        for (Item item : items){
+        for (Item item : items) {
             System.out.println("ID заявки:" + item.getId() + "      " + "Имя заявки: " + item.name + "      Описание заявки: "  + item.description);
         }
     }
-    private void editItem(){
+    private void editItem() {
         System.out.println("------------ Замена заявки --------------");
         String id = this.input.ask("Введите ID заявки, которую хотите заменить :");
         String name = this.input.ask("Введите имя заявки :");
@@ -86,26 +86,26 @@ public class StartUI {
             System.out.println("------------Заявка не изменена-----------");
         }
     }
-    private void deleteItem(){
+    private void deleteItem() {
         System.out.println("------------ Удаление заявки --------------");
         String id = this.input.ask("Введите ID заявки :");
         boolean b = this.tracker.delete(id);
-        if(b) {
+        if (b) {
             System.out.println("------------ Заявка удалена успешно --------------");
         } else {
             System.out.println("------------ Заявка не удалена --------------");
         }
     }
-    private void findItembyName(){
+    private void findItembyName() {
         System.out.println("------------ Поиск заявок по имени --------------");
         String name = this.input.ask("Введите имя заявки :");
         Item[] items = this.tracker.findByName(name);
         System.out.println("------------  Найденные заявки --------------");
-        for(Item item : items) {
+        for (Item item : items) {
             System.out.println("Id заявки" + item.getId() + "     Имя заявки:" + item.getName() + "     Описание заявки:" + item.getDescription());
         }
     }
-    private void findItembyID(){
+    private void findItembyID() {
         System.out.println("------------ Поиск заявок по ID --------------");
         String id = this.input.ask("Введите ID заявки :");
         Item item = this.tracker.findById(id);
@@ -113,13 +113,13 @@ public class StartUI {
         System.out.println("Id заявки" + item.getId() + "     Имя заявки:" + item.getName() + "     Описание заявки:" + item.getDescription());
     }
     private void showMenu() {
-        System.out.println("0. Add new Item\n" +
-                "1. Show all items\n" +
-                "2. Edit item\n" +
-                "3. Delete item\n" +
-                "4. Find item by Id\n" +
-                "5. Find items by name\n" +
-                "6. Exit Program\n");
+        System.out.println("0. Add new Item\n"
+                + "1. Show all items\n"
+                + "2. Edit item\n"
+                + "3. Delete item\n"
+                + "4. Find item by Id\n"
+                + "5. Find items by name\n"
+                + "6. Exit Program\n");
         // добавить остальные пункты меню.
     }
 

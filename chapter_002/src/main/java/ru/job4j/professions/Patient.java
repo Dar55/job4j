@@ -2,7 +2,7 @@ package ru.job4j.professions;
 
 public class Patient {
    private String name;
-   Patient(String name){}
+   Patient(String name) { }
 
 }
 

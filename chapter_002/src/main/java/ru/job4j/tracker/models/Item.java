@@ -31,7 +31,7 @@ public class Item {
         return this.id;
     }
 
-    public String setId(String id) {
-        return this.id = id;
+    public void setId(String ids) {
+        this.id = ids;
     }
 }

@@ -28,12 +28,12 @@ public class Tracker {
      * @param item новая заявка
      * @param id уникальный номер заявки, которую правим
      */
-    public boolean replace(String id, Item item){
+    public boolean replace(String id, Item item) {
         boolean result = false;
-        for (int i = 0;i < position; i++ ) {
+        for (int i = 0; i < position; i++) {
             if (this.items[i].getId().equals(id)) {
-                result = true;
                 this.items[i] = item;
+                result = true;
                 break;
             }
         }
@@ -48,7 +48,7 @@ public class Tracker {
        boolean result = false;
        for (int i = 0; i < position; i++) {
            if (this.items[i].getId().equals(id)) {
-               System.arraycopy(this.items, i + 1 , this.items, i  , position - i );
+               System.arraycopy(this.items, i + 1, this.items, i, position - i);
                this.position = this.position - 1;
                result = true;
                break;
@@ -60,10 +60,10 @@ public class Tracker {
      * Поиск по имени
      * @param key имя заявки
      */
-    public Item[] findByName(String key){
+    public Item[] findByName(String key) {
         int b = 0;
         Item[] result = new Item[this.position];
-        for (int index = 0; index != this.position;index++){
+        for (int index = 0; index != this.position; index++) {
             if (this.items[index].getName().equals(key)) {
                 result[b++] = this.items[index];
             }

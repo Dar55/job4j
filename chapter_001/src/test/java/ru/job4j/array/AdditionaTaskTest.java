@@ -6,7 +6,7 @@ import static org.junit.Assert.assertThat;
 
 public class AdditionaTaskTest {
     @Test
-    public void whenSecondArrayMore(){
+    public void whenSecondArrayMore() {
         int[] array1 = new int[] {1, 2, 3, 4, 5, 9};
         int[] array2 = new int[] {1, 4, 7, 8, 12, 21, 37, 44};
         AdditionaTask test = new AdditionaTask();
@@ -15,7 +15,7 @@ public class AdditionaTaskTest {
         assertThat(result, is(expect));
     }
     @Test
-    public void whenFirstArrayMore(){
+    public void whenFirstArrayMore() {
         int[] array1 = new int[] {1, 2, 3, 4, 5, 9, 12, 17};
         int[] array2 = new int[] {1, 4, 7, 8};
         AdditionaTask test = new AdditionaTask();
@@ -24,7 +24,7 @@ public class AdditionaTaskTest {
         assertThat(result, is(expect));
     }
     @Test
-    public void whenEqualArrays(){
+    public void whenEqualArrays() {
         int[] array1 = new int[] {1, 2, 3, 4};
         int[] array2 = new int[] {1, 4, 7, 8};
         AdditionaTask test = new AdditionaTask();
