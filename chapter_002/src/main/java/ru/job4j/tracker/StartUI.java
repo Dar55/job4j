@@ -22,7 +22,7 @@ public class StartUI {
      * @param input ввод данных.
      * @param tracker хранилище заявок.
      */
-    private StartUI(Input input, Tracker tracker) {
+    public StartUI(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
     }
@@ -30,7 +30,7 @@ public class StartUI {
     /**e
      * Основой цикл программы.
      */
-    private void init() {
+    public void init() {
         boolean exit = false;
         while (!exit) {
             this.showMenu();
@@ -79,7 +79,8 @@ public class StartUI {
         String name = this.input.ask("Введите имя заявки :");
         String desc = this.input.ask("Введите описание заявки :");
         Item item = new Item(name, desc, 123L);
-        if (tracker.replace(id, item)) {
+        boolean b = tracker.replace(id, item);
+        if (b) {
             System.out.println("------------Заявка отредактирована-----------");
         } else {
             System.out.println("------------Заявка не изменена-----------");
@@ -88,7 +89,8 @@ public class StartUI {
     private void deleteItem() {
         System.out.println("------------ Удаление заявки --------------");
         String id = this.input.ask("Введите ID заявки :");
-        if (this.tracker.delete(id)) {
+        boolean b = this.tracker.delete(id);
+        if (b) {
             System.out.println("------------ Заявка удалена успешно --------------");
         } else {
             System.out.println("------------ Заявка не удалена --------------");
@@ -118,10 +120,7 @@ public class StartUI {
                 + "4. Find item by Id" + System.lineSeparator()
                 + "5. Find items by name" + System.lineSeparator()
                 + "6. Exit Program" + System.lineSeparator());
-        // добавить остальные пункты меню.
     }
-
-
     /**
      * Запускт программы.
      */
