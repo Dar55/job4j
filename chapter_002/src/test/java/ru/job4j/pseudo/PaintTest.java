@@ -16,7 +16,7 @@ public class PaintTest {
     }
     @After
     public void backOutput() {
-        System.setOut(this.stdout);
+       System.setOut(this.stdout);
     }
     @Test
     public void whenDrawSquare() {
