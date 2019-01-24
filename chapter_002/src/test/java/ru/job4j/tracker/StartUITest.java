@@ -31,21 +31,23 @@ public class StartUITest {
            + "6. Exit Program"
            + System.lineSeparator()
            + System.lineSeparator();
-  @Before
-    public void loadOutput() {
-       System.setOut(new PrintStream(this.out));
-   }
-    @After
-    public void backOutput() {
-        System.setOut(this.stdout);
-   }
+ // @Before
+ //  public void loadOutput() {
+ //    System.setOut(new PrintStream(this.out));
+ // }
+  //@After
+  //public void backOutput() {
+  //      System.setOut(this.stdout);
+ //}
 
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
+
         Tracker tracker = new Tracker();
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
         new StartUI(input, tracker).init();
         Item[] item = tracker.findByName("test name");
+
         assertThat(this.out.toString(), is(new StringBuilder()
                 .append(MENU)
                 .append("------------ Добавление новой заявки --------------")
