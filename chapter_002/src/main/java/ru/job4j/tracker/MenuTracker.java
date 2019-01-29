@@ -4,7 +4,9 @@ import  ru.job4j.tracker.models.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MenuTracker {
+
     private Input input;
     private Tracker tracker;
     private List<UserAction> actions = new ArrayList<>();
@@ -59,7 +61,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Add new Item.";
+            return String.format("%s. Add new Item.", key());
         }
     }
     private class ShowItems implements UserAction {
@@ -78,7 +80,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Show items.";
+            return String.format("%s. Show all Item", key());
         }
     }
 
@@ -104,8 +106,7 @@ public class MenuTracker {
         }
 
         @Override
-        public String info() {
-            return "Update item.";
+        public String info(){return String.format("%s. Update Item.", key());
         }
     }
     private class DeleteItem implements UserAction {
@@ -128,7 +129,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Delete item.";
+            return String.format("%s. Delete Item.", key());
         }
     }
     private class FindItemById implements UserAction {
@@ -148,7 +149,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Find item.";
+            return String.format("%s. Find Item by ID", key());
         }
     }
     private class FindItemsByName implements UserAction {
@@ -170,7 +171,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Find item.";
+            return String.format("%s. Find Item by name", key());
         }
     }
     private class ExitProgram implements UserAction {
@@ -186,7 +187,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Exit.";
+            return String.format("%s. Exit", key());
         }
     }
 }

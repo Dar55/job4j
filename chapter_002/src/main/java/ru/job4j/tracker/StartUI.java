@@ -37,13 +37,13 @@ public class StartUI {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         List<Integer> range = new ArrayList<>();
         menu.fillActions();
-        System.out.println(menu.getActionsLentgh());
         for (int i = 0; i < menu.getActionsLentgh(); i++) {
             range.add(i);
         }
         do {
             menu.show();
-            menu.select(6);
+            final String ask = this.input.ask("Enter:");
+            menu.select(Integer.parseInt(ask));
         } while (!"y".equals(this.input.ask("Exit?(y): ")));
     }
 
