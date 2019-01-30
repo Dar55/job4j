@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class StartUI {
 
+   // private int[] ranges = new int[] {1, 2, 3, 4, 5, 6, 7};
     private static final String ADD = "0";
     private static final String SHOW = "1";
     private static final String EDIT = "2";
@@ -35,90 +36,22 @@ public class StartUI {
      */
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
-        List<Integer> range = new ArrayList<>();
         menu.fillActions();
+        int[] range =new int[menu.getActionsLentgh()];
+        System.out.println(menu.getActionsLentgh());
         for (int i = 0; i < menu.getActionsLentgh(); i++) {
-            range.add(i);
+            range[i] = i;
         }
         do {
             menu.show();
-            final String ask = this.input.ask("Enter:");
-            menu.select(Integer.parseInt(ask));
+            menu.select(input.ask("select:", range));
         } while (!"y".equals(this.input.ask("Exit?(y): ")));
     }
 
     /**
-     * Метод реализует добавленяи новый заявки в хранилище.
-     */
-    private void createItem() {
-        System.out.println("------------ Добавление новой заявки --------------");
-        String name = this.input.ask("Введите имя заявки :");
-        String desc = this.input.ask("Введите описание заявки :");
-        Item item = new Item(name, desc, 123L);
-        this.tracker.add(item);
-        System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
-    }
-    /**
-     * Метод реализует показ всех ненулевых итемов
-     */
-//    private void showItems() {
- //       Item[] items = this.tracker.findAll();
- //       for (Item item : items) {
- //           System.out.println("ID заявки:" + item.getId() + "      " + "Имя заявки: " + item.name + "      Описание заявки: "  + item.description);
-//        }
-//    }
- //   private void editItem() {
-//        System.out.println("------------ Замена заявки --------------");
-//        String id = this.input.ask("Введите ID заявки, которую хотите заменить :");
-//        String name = this.input.ask("Введите имя заявки :");
-//        String desc = this.input.ask("Введите описание заявки :");
-//        Item item = new Item(name, desc, 123L);
-//        boolean b = tracker.replace(id, item);
-//        if (b) {
-//            System.out.println("------------Заявка отредактирована-----------");
-//        } else {
-//           System.out.println("------------Заявка не изменена-----------");
-//        }
-//   }
-//    private void deleteItem() {
-//        System.out.println("------------ Удаление заявки --------------");
-//        String id = this.input.ask("Введите ID заявки :");
-//        boolean b = this.tracker.delete(id);
-//        if (b) {
-//            System.out.println("------------ Заявка удалена успешно --------------");
-//        } else {
-//            System.out.println("------------ Заявка не удалена --------------");
-//        }
-//    }
-//    private void findItembyName() {
-//        System.out.println("------------ Поиск заявок по имени --------------");
-//        String name = this.input.ask("Введите имя заявки :");
-//        Item[] items = this.tracker.findByName(name);
-//        System.out.println("------------  Найденные заявки --------------");
-//        for (Item item : items) {
-//            System.out.println("Id заявки" + item.getId() + "     Имя заявки:" + item.getName() + "     Описание заявки:" + item.getDescription());
-//        }
-//    }
-//    private void findItembyID() {
-//        System.out.println("------------ Поиск заявок по ID --------------");
-//        String id = this.input.ask("Введите ID заявки :");
-//       Item item = this.tracker.findById(id);
-//      System.out.println("------------ Найденная заявка --------------");
-//        System.out.println("Id заявки" + item.getId() + "     Имя заявки:" + item.getName() + "     Описание заявки:" + item.getDescription());
-//    }
-    private void showMenu() {
-        System.out.println("0. Add new Item" + System.lineSeparator()
-                + "1. Show all items" + System.lineSeparator()
-                + "2. Edit item" + System.lineSeparator()
-                + "3. Delete item" + System.lineSeparator()
-                + "4. Find item by Id" + System.lineSeparator()
-                + "5. Find items by name" + System.lineSeparator()
-                + "6. Exit Program" + System.lineSeparator());
-    }
-    /**
-     * Запускт программы.
+     * Запуск программы.
      */
     public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 }

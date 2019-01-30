@@ -5,5 +5,6 @@ import java.util.List;
 public interface Input {
 
    String ask(String question);
-   //, List<Integer> range
+   int ask (String question, int[] range);
+
 }
