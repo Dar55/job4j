@@ -30,13 +30,13 @@ public class StartUITest {
            + System.lineSeparator()
            + "6. Exit"
            + System.lineSeparator();
-  @Before
+ @Before
    public void loadOutput() {
-     System.setOut(new PrintStream(this.out));
+   System.setOut(new PrintStream(this.out));
   }
  @After
  public void backOutput() {
-       System.setOut(this.stdout);
+      System.setOut(this.stdout);
  }
 
     @Test
@@ -68,6 +68,7 @@ public class StartUITest {
         Item item = tracker.add(new Item("test name", "desc", 123L));
         Input input = new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "y"});
         new StartUI(input, tracker).init();
+
         assertThat(this.out.toString(), is(new StringBuilder()
                 .append(MENU)
                 .append("------------ Замена заявки --------------")
