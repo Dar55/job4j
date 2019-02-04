@@ -13,10 +13,22 @@ public class ValidateInput implements Input {
     }
     public int ask(String question, int[] range) {
         boolean invalid = true;
+        boolean exist = false;
         int value = -1;
+        int key;
         do {
             try {
                 value = this.input.ask(question, range);
+                key = Integer.valueOf(value);
+                for (int val : range) {
+                    if (val == key) {
+                        exist = true;
+                        break;
+                    }
+                }
+                    if (exist == false){
+                        throw new MenuOutException("Out of menu range.");
+                    }
                 invalid = false;
             } catch (MenuOutException moe) {
                 System.out.println("Please select key from menu.");
