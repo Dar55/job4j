@@ -8,7 +8,6 @@ public class PhoneDictionary {
 
     public void add(Person person) {
         this.persons.add(person);
-        System.out.println(persons.get(0));
     }
 
     /**
@@ -19,7 +18,7 @@ public class PhoneDictionary {
     public List<Person> find(String key) {
         List<Person> result = new ArrayList<>();
         for (Person pers : persons) {
-            if ((pers.getName() == key)|(pers.getAddress() == key)|(pers.getPhone() == key)|(pers.getSurname() == key)){
+            if ((pers.getName().equals(key))||(pers.getAddress().equals(key))||(pers.getPhone().equals(key))||(pers.getSurname().equals(key))){
                 result.add(pers);
             }
         }
