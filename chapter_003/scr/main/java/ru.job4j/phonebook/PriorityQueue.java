@@ -3,7 +3,7 @@ package ru.job4j.phonebook;
 import java.util.LinkedList;
 
 public class PriorityQueue {
-    private LinkedList<Integer> tasks = new LinkedList<>();
+    private LinkedList<Task> tasks = new LinkedList<>();
 
     /**
      * Метод должен вставлять в нужную позицию элемент.
@@ -12,10 +12,19 @@ public class PriorityQueue {
      * @param task задача
      */
     public void put(Task task) {
-      //  tasks.add(task.getPriority(), task.getDesc());
-    }
+        int index = 0;
+        if (tasks.peekFirst() != null) {
+            for (Task tat : tasks) {
+                if (tat.getPriority() > task.getPriority()) {
+                    break;
+                }
+            index++;
+            }
+        }
+        tasks.add(index, task);
+        }
 
-    public Integer take() {
+    public Task take() {
         return this.tasks.poll();
     }
 }
