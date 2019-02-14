@@ -11,13 +11,13 @@ public class User {
         this.city = city;
     }
 
-    public Integer getId (){
+    public int getId (){
         return id;
     }
-    private String getName (){
+    public String getName (){
         return name;
     }
-    private String getCity (){
+    public String getCity (){
         return city;
     }
 }
