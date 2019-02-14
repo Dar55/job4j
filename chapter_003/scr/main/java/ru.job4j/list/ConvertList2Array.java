@@ -8,7 +8,6 @@ public class ConvertList2Array {
         int[][] array = new int[rows][cells];
         int i = 0;
         int j = 0;
-//        int index = 0;
 
         for (int li : list){
             array[j][i] = li;
