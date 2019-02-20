@@ -10,8 +10,9 @@ public class Tracker {
     /**
      * Массив для хранение заявок.
      */
-    private final Item[] items = new Item[100];
-    private int position = 0;
+    //private final Item[] items = new Item[100];
+    List<Item> items = new ArrayList<>();
+   // private int position = 0;
     private static final Random RN = new Random();
 
     /**
@@ -20,7 +21,8 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        this.items[this.position++] = item;
+      //  this.items[this.position++] = item;
+        this.items.add(item);
         return item;
     }
     /**
@@ -29,14 +31,10 @@ public class Tracker {
      * @param id уникальный номер заявки, которую правим
      */
     public boolean replace(String id, Item item) {
-        boolean result = false;
-        for (int i = 0; i < position; i++) {
-            if (this.items[i].getId().equals(id)) {
-                this.items[i] = item;
-                this.items[i].setId(id);
-                result = true;
-                break;
-            }
+        item.setId(id);
+        boolean  result = this.delete(id);
+        if (result == true){
+            this.items.add(item);
         }
         return result;
     }
@@ -45,15 +43,16 @@ public class Tracker {
      * @param id уникальный номер заявки, которую удаляем
      */
    public boolean delete(String id) {
-       int n = 0;
        boolean result = false;
-       for (int i = 0; i < position; i++) {
-           if (this.items[i].getId().equals(id)) {
-               System.arraycopy(this.items, i + 1, this.items, i, position - i);
-               this.position = this.position - 1;
+       Iterator<Item> itemIterator = items.iterator();
+       while (itemIterator.hasNext()) {
+
+           Item nextItem = itemIterator.next();
+           if (nextItem.getId().equals(id)) {
+               itemIterator.remove();
                result = true;
-               break;
            }
+
        }
        return result;
    }
@@ -61,15 +60,14 @@ public class Tracker {
      * Поиск по имени
      * @param key имя заявки
      */
-    public Item[] findByName(String key) {
-        int b = 0;
-        Item[] result = new Item[this.position];
-        for (int index = 0; index != this.position; index++) {
-            if (this.items[index].getName().equals(key)) {
-                result[b++] = this.items[index];
+    public List findByName(String key) {
+        List<Item> itemsReturn = new ArrayList<>();
+        for(Item it:items){
+            if(it.getName().equals(key)){
+                itemsReturn.add(it);
             }
         }
-        return Arrays.copyOf(result, b);
+        return itemsReturn;
    }
     /**
      * Поиск по id
@@ -77,11 +75,12 @@ public class Tracker {
      */
     public Item findById(String id) {
         Item result = null;
+        Iterator<Item> itemIterator = items.iterator();
+        while (itemIterator.hasNext()) {
 
-        for (Item item : items) {
-            if (item != null && item.getId().equals(id)) {
-                result = item;
-                break;
+            Item nextItem = itemIterator.next();
+            if (nextItem.getId().equals(id)) {
+                result = nextItem;
             }
         }
         return result;
@@ -93,8 +92,8 @@ public class Tracker {
     /**
      * Поиск всех ненулевых заявок
      */
-    public Item[] findAll() {
-         return Arrays.copyOf(this.items, this.position);
+    public List findAll() {
+        return items;
     }
 }
 

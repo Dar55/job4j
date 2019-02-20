@@ -2,6 +2,9 @@ package ru.job4j.tracker;
 import  ru.job4j.tracker.models.*;
 
 import org.junit.Test;
+
+import java.util.List;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertNull;
@@ -12,7 +15,7 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "testDescription", 123L);
         tracker.add(item);
-        assertThat(tracker.findAll()[0], is(item));
+        assertThat(tracker.findAll().get(0), is(item));
     }
     @Test
     public void whenReplaceNameThenReturnNewName() {
@@ -38,8 +41,8 @@ public class TrackerTest {
         tracker.add(item);
         tracker.add(item1);
         tracker.add(item2);
-        Item[] find = tracker.findByName("test1");
-        String s = find[0].getId();
+        List<Item> find = tracker.findByName("test1");
+        String s = find.get(0).getId();
         assertThat(tracker.findById(s).getName(), is("test1"));
     }
     @Test
@@ -51,8 +54,8 @@ public class TrackerTest {
         tracker.add(item);
         tracker.add(item1);
         tracker.add(item2);
-        Item[] find = tracker.findByName("test2");
-        String s = find[0].getId();
+        List<Item> find = tracker.findByName("test2");
+        String s = find.get(0).getId();
         tracker.delete(s);
        assertNull(tracker.findById(s));
     }

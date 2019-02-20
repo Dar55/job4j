@@ -85,7 +85,7 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            Item[] items = tracker.findAll();
+            List<Item> items = tracker.findAll();
             for (Item item : items) {
                 System.out.println("ID заявки:" + item.getId() + "      " + "Имя заявки: " + item.name + "      Описание заявки: "  + item.description);
             }
@@ -156,7 +156,7 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             System.out.println("------------ Поиск заявок по имени --------------");
             String name = input.ask("Введите имя заявки :");
-            Item[] items = tracker.findByName(name);
+            List<Item> items = tracker.findByName(name);
             System.out.println("------------  Найденные заявки --------------");
             for (Item item : items) {
                 System.out.println("Id заявки" + item.getId() + "     Имя заявки:" + item.getName() + "     Описание заявки:" + item.getDescription());

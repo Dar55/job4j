@@ -11,6 +11,8 @@ import java.io.PrintStream;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
+
+import java.util.List;
 import java.util.StringJoiner;
 
 public class StartUITest {
@@ -45,14 +47,14 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Input input = new StubInput(new String[]{"0", "test name", "desc", "y"});
         new StartUI(input, tracker).init();
-        Item[] item = tracker.findByName("test name");
+        List<Item> item = tracker.findByName("test name");
 
         assertThat(this.out.toString(), is(new StringBuilder()
                 .append(MENU)
                 .append("------------ Adding new item --------------")
                 .append (System.lineSeparator())
                 .append("------------ New Item with Id : ")
-                .append(item[0].getId())
+                .append(item.get(0).getId())
                 .append (System.lineSeparator())
                 .append("------------ New Item with Name : test name")
                 .append (System.lineSeparator())
@@ -91,7 +93,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc", 123L));
         Input input = new StubInput(new String[]{"5", item.getName(), "y"});
-        Item[] items = tracker.findByName("test name");
+        List<Item> items = tracker.findByName("test name");
         new StartUI(input, tracker).init();
         assertThat(this.out.toString(), is(new StringBuilder()
                 .append(MENU)
@@ -100,7 +102,7 @@ public class StartUITest {
                 .append("------------  Найденные заявки --------------")
                 .append (System.lineSeparator())
                 .append ("Id заявки")
-                .append (items[0].getId())
+                .append (items.get(0).getId())
                 .append("     Имя заявки:test name")
                 .append("     Описание заявки:desc")
                 .append (System.lineSeparator())
