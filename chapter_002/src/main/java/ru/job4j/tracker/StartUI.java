@@ -37,7 +37,7 @@ public class StartUI {
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         menu.fillActions();
-        int[] range =new int[menu.getActionsLentgh()];
+        int[] range = new int[menu.getActionsLentgh()];
         for (int i = 0; i < menu.getActionsLentgh(); i++) {
             range[i] = i;
         }

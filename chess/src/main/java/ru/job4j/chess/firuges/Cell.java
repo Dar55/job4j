@@ -19,7 +19,7 @@ public enum Cell {
             this.y = y;
     }
 
-   public void Empty (boolean em){
+   public void empty(boolean em) {
         this.em = em;
     }
 

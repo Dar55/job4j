@@ -21,7 +21,6 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-      //  this.items[this.position++] = item;
         this.items.add(item);
         return item;
     }
@@ -32,9 +31,30 @@ public class Tracker {
      */
     public boolean replace(String id, Item item) {
         item.setId(id);
-        boolean  result = this.delete(id);
-        if (result == true){
-            this.items.add(item);
+       // boolean  result = this.delete(id);
+        boolean result = false;
+   //     int res = items.indexOf(item);
+   //     if (res != -1) {
+    //        this.items.set(res,item);
+    //        result = true;
+   //     }
+
+        for (Item it:items) {
+            if (it.getId().equals(id)) {
+                it.setName(item.getName());
+                it.setDescription(item.getDescription());
+                result = true;
+            }
+ //       Iterator<Item> itemIterator = items.iterator();
+//        while (itemIterator.hasNext()) {
+//
+//            Item nextItem = itemIterator.next();
+ //           if (nextItem.getId().equals(id)) {
+ //               this.items.set(itemIter.)
+ //             //  itemIterator.remove();
+ //               result = true;
+ //           }
+
         }
         return result;
     }
@@ -44,16 +64,25 @@ public class Tracker {
      */
    public boolean delete(String id) {
        boolean result = false;
-       Iterator<Item> itemIterator = items.iterator();
-       while (itemIterator.hasNext()) {
-
-           Item nextItem = itemIterator.next();
-           if (nextItem.getId().equals(id)) {
-               itemIterator.remove();
+       int i = 0;
+       for (Item it:items) {
+           if (it.getId().equals(id)) {
                result = true;
+               break;
            }
-
+           i++;
        }
+        items.remove(i);
+//      Iterator<Item> itemIterator = items.iterator();
+//       while (itemIterator.hasNext()) {
+
+//           Item nextItem = itemIterator.next();
+//           if (nextItem.getId().equals(id)) {
+//               itemIterator.remove();
+//               result = true;
+//           }
+
+ //      }
        return result;
    }
     /**
@@ -62,8 +91,8 @@ public class Tracker {
      */
     public List findByName(String key) {
         List<Item> itemsReturn = new ArrayList<>();
-        for(Item it:items){
-            if(it.getName().equals(key)){
+        for (Item it:items) {
+            if (it.getName().equals(key)) {
                 itemsReturn.add(it);
             }
         }

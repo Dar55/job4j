@@ -40,13 +40,13 @@ public class BishopBlack implements Figure {
                     y = y + (dest.y - source.y) / abs(dest.y - source.y);
                     for (Cell steps1 : Cell.values()) {
                             if (steps1.x == x && steps1.y == y) {
-                                if (steps1.em == true) {
+                                if (steps1.em) {
                                     result = true;
                                 }
                                 break;
                             }
                         }
-                         if (result == false) {
+                         if (!result) {
                             steps = new Cell[]{dest};
                             steps[0].em = true;
                             source.em = false;

@@ -26,7 +26,7 @@ public class ValidateInput implements Input {
                         break;
                     }
                 }
-                    if (exist == false){
+                    if (!exist) {
                         throw new MenuOutException("Out of menu range.");
                     }
                 invalid = false;
@@ -36,7 +36,7 @@ public class ValidateInput implements Input {
                 System.out.println("Please enter validate again.");
             }
         }
-            while (invalid) ;
+            while (invalid);
             return value;
         }
     }

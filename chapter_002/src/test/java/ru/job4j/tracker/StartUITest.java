@@ -18,7 +18,7 @@ import java.util.StringJoiner;
 public class StartUITest {
    private final PrintStream stdout = System.out;
    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
-   final String  MENU =  "0. Add new Item."
+   final String  menu =  "0. Add new Item."
            + System.lineSeparator()
            + "1. Show all Item"
            + System.lineSeparator()
@@ -50,16 +50,16 @@ public class StartUITest {
         List<Item> item = tracker.findByName("test name");
 
         assertThat(this.out.toString(), is(new StringBuilder()
-                .append(MENU)
+                .append(menu)
                 .append("------------ Adding new item --------------")
-                .append (System.lineSeparator())
+                .append(System.lineSeparator())
                 .append("------------ New Item with Id : ")
                 .append(item.get(0).getId())
-                .append (System.lineSeparator())
+                .append(System.lineSeparator())
                 .append("------------ New Item with Name : test name")
-                .append (System.lineSeparator())
+                .append(System.lineSeparator())
                 .append("------------ New Item with Description : desc")
-                .append (System.lineSeparator())
+                .append(System.lineSeparator())
                 .toString()
         ));
     }
@@ -72,11 +72,11 @@ public class StartUITest {
         new StartUI(input, tracker).init();
 
         assertThat(this.out.toString(), is(new StringBuilder()
-                .append(MENU)
+                .append(menu)
                 .append("------------ Замена заявки --------------")
-                .append (System.lineSeparator())
+                .append(System.lineSeparator())
                 .append("------------Заявка отредактирована-----------")
-                .append (System.lineSeparator())
+                .append(System.lineSeparator())
                 .toString()
         ));
     }
@@ -96,16 +96,16 @@ public class StartUITest {
         List<Item> items = tracker.findByName("test name");
         new StartUI(input, tracker).init();
         assertThat(this.out.toString(), is(new StringBuilder()
-                .append(MENU)
+                .append(menu)
                 .append("------------ Поиск заявок по имени --------------")
-                .append (System.lineSeparator())
+                .append(System.lineSeparator())
                 .append("------------  Найденные заявки --------------")
-                .append (System.lineSeparator())
-                .append ("Id заявки")
-                .append (items.get(0).getId())
+                .append(System.lineSeparator())
+                .append("Id заявки")
+                .append(items.get(0).getId())
                 .append("     Имя заявки:test name")
                 .append("     Описание заявки:desc")
-                .append (System.lineSeparator())
+                .append(System.lineSeparator())
                 .toString()
         ));
     }

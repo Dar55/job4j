@@ -34,4 +34,12 @@ public class Item {
     public void setId(String ids) {
         this.id = ids;
     }
+    public void setName(String names) {
+        this.name = names;
+    }
+    public void setDescription(String descriptions) {
+        this.description= descriptions;
+    }
+
+
 }
