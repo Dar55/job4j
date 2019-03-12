@@ -39,10 +39,9 @@ public class Tracker {
     //        result = true;
    //     }
 
-        for (Item it:items) {
-            if (it.getId().equals(id)) {
-                it.setName(item.getName());
-                it.setDescription(item.getDescription());
+        for (int i = 0; i<items.size();i++) {
+            if (items.get(i).getId().equals(id)) {
+                items.set(i, item);
                 result = true;
             }
  //       Iterator<Item> itemIterator = items.iterator();
@@ -72,7 +71,7 @@ public class Tracker {
            }
            i++;
        }
-        items.remove(i);
+       if (result) items.remove(i);
 //      Iterator<Item> itemIterator = items.iterator();
 //       while (itemIterator.hasNext()) {
 
