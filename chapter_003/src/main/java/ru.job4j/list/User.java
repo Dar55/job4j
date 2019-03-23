@@ -1,5 +1,7 @@
 package ru.job4j.list;
 
+import java.util.List;
+
 public class User implements Comparable<User> {
 
     private Integer id, age;
@@ -30,5 +32,6 @@ public class User implements Comparable<User> {
     public String getCity (){
         return city;
     }
+
 
 }
