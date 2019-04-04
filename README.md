@@ -1,7 +1,2 @@
-# Репозиторий Валерия Васькова
-
-
-Ссылка на проект http://job4j.ru/
-
-Планирую пройти все 4 части курса к середине  2019 года.
-
+[![Build Status](https://travis-ci.org/Dar55/job4j.svg?branch=master)](https://travis-ci.org/Dar55/job4j)
+[![codecov](https://codecov.io/gh/Dar55/job4j/branch/master/graph/badge.svg)](https://codecov.io/gh/Dar55/job4j)
