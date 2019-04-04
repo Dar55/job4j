@@ -38,7 +38,7 @@ public class Item {
         this.name = names;
     }
     public void setDescription(String descriptions) {
-        this.description= descriptions;
+        this.description = descriptions;
     }
 
 

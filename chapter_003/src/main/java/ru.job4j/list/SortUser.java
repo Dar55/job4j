@@ -33,7 +33,7 @@ public class SortUser {
         List<User> users = new ArrayList<>();
         users.addAll(bum);
         users.sort(new Comparator<User>() {
-            int result =0;
+            int result = 0;
             @Override
             public int compare(User o1, User o2) {
                 result = o1.getName().compareTo(o2.getName());

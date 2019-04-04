@@ -7,14 +7,14 @@ class Base {
 }
 }
 
-    class Child extends Base{
+    class Child extends Base {
         @Override
         public void print() {
             System.out.println("2");
         }
 
-        public static void main (String[] args) {
-           Base obj = new Child ();
+        public static void main(String[] args) {
+           Base obj = new Child();
            // Child obj = new Child ();
             obj.print();
         }

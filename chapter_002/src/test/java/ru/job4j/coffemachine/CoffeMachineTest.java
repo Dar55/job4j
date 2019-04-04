@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 
 public class CoffeMachineTest {
     @Test
-    public void ChargeTest() {
+    public void chargeTest() {
         CoffeMachine d = new CoffeMachine();
         List moneyCount1 = d.changes(50, 12);
         String result = moneyCount1.toString();
