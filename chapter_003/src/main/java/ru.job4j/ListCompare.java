@@ -5,19 +5,14 @@ import java.util.Comparator;
 public class ListCompare implements Comparator<String> {
     @Override
     public int compare(String left, String right) {
-        //    public static void main (String[] args) {
-        //      String left = "amba";
-        //      String right = "amba";
+
         int result = 0;
         int countable =  left.length() - right.length() > 0 ? right.length() : left.length();
         for (int i = 0; i < countable; i++) {
-              //  if (Character.compare(left.charAt(i), right.charAt(i)) != 0) {
-                    result = Character.compare(left.charAt(i), right.charAt(i));
-             //       break;
+                result = Character.compare(left.charAt(i), right.charAt(i));
                 if (result != 0) {
                     break;
                 }
-            //   }
 
         }
         if ((Integer.compare(left.length(), right.length()) !=0) && (result == 0)) {
