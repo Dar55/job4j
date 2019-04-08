@@ -15,7 +15,7 @@ public class ListCompare implements Comparator<String> {
                 }
 
         }
-        if ((Integer.compare(left.length(), right.length()) !=0) && (result == 0)) {
+        if (result == 0) {
                 result = Integer.compare(left.length(), right.length());
         }
     return result;
