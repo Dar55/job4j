@@ -9,31 +9,20 @@ public class ListCompare implements Comparator<String> {
         //      String left = "amba";
         //      String right = "amba";
         int result = 0;
-        int countable = 0;
-        switch (Integer.compare(left.length(), right.length())) {
-            case 0:
-                     countable = left.length();
-                     break;
-            case -1:
-                     countable = left.length();
-                     result = -1;
-                     break;
-            case 1:
-                     countable = right.length();
-                     result = 1;
-                     break;
-            default:
-                System.out.println("бум");
-        }
-
-            for (int i = 0; i < countable; i++) {
-                if (Character.compare(left.charAt(i), right.charAt(i)) != 0) {
+        int countable =  left.length() - right.length() > 0 ? right.length() : left.length();
+        for (int i = 0; i < countable; i++) {
+              //  if (Character.compare(left.charAt(i), right.charAt(i)) != 0) {
                     result = Character.compare(left.charAt(i), right.charAt(i));
+             //       break;
+                if (result != 0) {
                     break;
                 }
+            //   }
 
-            }
-      //  } else result = Integer.compare(left.length(), right.length());
+        }
+        if ((Integer.compare(left.length(), right.length()) !=0) && (result == 0)) {
+                result = Integer.compare(left.length(), right.length());
+        }
     return result;
 }
 }
