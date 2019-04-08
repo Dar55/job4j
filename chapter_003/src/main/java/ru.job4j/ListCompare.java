@@ -10,7 +10,7 @@ public class ListCompare implements Comparator<String> {
         //      String right = "amba";
         int result = 0;
         int countable = 0;
-        switch(Integer.compare(left.length(), right.length())) {
+        switch (Integer.compare(left.length(), right.length())) {
             case 0:
                      countable = left.length();
                      break;
@@ -22,6 +22,8 @@ public class ListCompare implements Comparator<String> {
                      countable = right.length();
                      result = 1;
                      break;
+            default:
+                System.out.println("бум");
         }
 
             for (int i = 0; i < countable; i++) {
@@ -29,7 +31,7 @@ public class ListCompare implements Comparator<String> {
                     result = Character.compare(left.charAt(i), right.charAt(i));
                     break;
                 }
-                ;
+
             }
       //  } else result = Integer.compare(left.length(), right.length());
     return result;
