@@ -15,14 +15,14 @@ public class Bank {
     private TreeMap<User, ArrayList<Account>> treemap = new TreeMap<>();
 
     public void addUser(User user) {
-        this.treemap.put(user, new ArrayList<>());
+            this.treemap.put(user, new ArrayList<>());
     }
 
-    public void delete(User user) {
+    public void deleteUser(User user) {
         this.treemap.remove(user);
     }
 
-    public void add(User user, Account account) {
+    public void addAccount(User user, Account account) {
         this.treemap.get(user).add(account);
     }
 
