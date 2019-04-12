@@ -1,7 +1,13 @@
 package ru.job4j.chess.firuges.black;
 
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.lang.Math.abs;
 
 /**
  *
@@ -22,8 +28,20 @@ public class KingBlack implements Figure {
     }
 
     @Override
-    public Cell[] way(Cell source, Cell dest) {
-        return new Cell[] {dest};
+    public List way(Cell source, Cell dest) {
+        List<Cell> list = new ArrayList<>();
+
+  //      System.out.println("by   " +source.y + "ey   " + dest.y + "bx   " + source.x + "ex   " + dest.x);
+        int res = abs(source.x - dest.x + source.y - dest.y);
+       if (((source.x == dest.x || (source.y == dest.y)) &&( res == 1)) || (source.x != dest.x && (source.y != dest.y) &&(res == 2))) {
+            for (Cell steps1 : Cell.values()) {
+                if (steps1.x == dest.x && steps1.y == dest.y) {
+                    list.add(steps1);
+                    break;
+                }
+            }
+        }
+        return list;
     }
 
     @Override

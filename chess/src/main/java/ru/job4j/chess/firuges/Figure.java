@@ -1,9 +1,11 @@
 package ru.job4j.chess.firuges;
 
+import java.util.List;
+
 public interface Figure {
     Cell position();
 
-    Cell[] way(Cell source, Cell dest);
+    List way(Cell source, Cell dest);
 
     default String icon() {
         return String.format(

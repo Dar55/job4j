@@ -1,7 +1,13 @@
 package ru.job4j.chess.firuges.black;
 
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.lang.Math.abs;
 
 /**
  *
@@ -22,14 +28,22 @@ public class PawnBlack implements Figure {
     }
 
     @Override
-    public Cell[] way(Cell source, Cell dest) {
-        Cell[] steps = new Cell[0];
-        if (source.y == dest.y + 1 && source.x == dest.x) {
-            steps = new Cell[] {dest};
-            steps[0].em = true;
-            source.em = false;
+    public List way(Cell source, Cell dest) {
+        List<Cell> list = new ArrayList<>();
+        int i = 0;
+        int y = source.y;
+        if ((source.y == dest.y + 1 && source.x == dest.x) || (source.y == 6 && source.y == dest.y + 2 && source.x == dest.x)) {
+            for (i = 0; i < abs(source.y - dest.y); i++) {
+                y = y - 1;
+                for (Cell steps1 : Cell.values()) {
+                    if (steps1.x == dest.x && steps1.y == y) {
+                        list.add(steps1);
+                        break;
+                    }
+                }
+            }
         }
-        return steps;
+        return list;
     }
 
     @Override

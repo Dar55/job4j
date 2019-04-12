@@ -3,6 +3,9 @@ package ru.job4j.chess.firuges.white;
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Petr Arsentev (parsentev@yandex.ru)
@@ -22,8 +25,9 @@ public class RookWhite implements Figure {
     }
 
     @Override
-    public Cell[] way(Cell source, Cell dest) {
-        return new Cell[] {dest};
+    public List way(Cell source, Cell dest) {
+        List<Cell> list = new ArrayList<>();
+        return list;
     }
 
     @Override

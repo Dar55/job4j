@@ -3,7 +3,11 @@ package ru.job4j.chess;
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+
+import static java.lang.Math.abs;
 
 /**
  * //TODO add comments.
@@ -24,13 +28,14 @@ public class Logic {
 
     public boolean move(Cell source, Cell dest) {
         boolean rst = false;
-
         int index = this.findBy(source);
         if (index != -1) {
-            Cell[] steps = this.figures[index].way(source, dest);
-            if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
-                rst = true;
+            List<Cell> list = this.figures[index].way(source, dest);
+            rst = checkBusy(list);
+            if (rst) {
+                this.figures[index].position().em = false;
                 this.figures[index] = this.figures[index].copy(dest);
+                this.figures[index].position().em = true;
             }
         }
         return rst;
@@ -53,5 +58,18 @@ public class Logic {
             }
         }
         return rst;
+    }
+    public boolean checkBusy(List<Cell> steps) {
+        boolean result = false;
+        for (Cell steps1 : steps) {
+                    if (steps1.em) {
+                        result = false;
+                        break;
+                    } else
+                    {
+                        result = true;
+                    }
+                }
+        return result;
     }
 }
