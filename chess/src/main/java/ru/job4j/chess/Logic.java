@@ -36,6 +36,8 @@ public class Logic {
                 this.figures[index].position().em = false;
                 this.figures[index] = this.figures[index].copy(dest);
                 this.figures[index].position().em = true;
+            } else {
+                throw new OccupiedWayException("Way is not correct");
             }
         }
         return rst;
@@ -61,6 +63,9 @@ public class Logic {
     }
     public boolean checkBusy(List<Cell> steps) {
         boolean result = false;
+        if (steps.isEmpty()) {
+            throw new ImpossibleMoveException("Figure can't move that");
+        }
         for (Cell steps1 : steps) {
                     if (steps1.em) {
                         result = false;
