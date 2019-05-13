@@ -3,6 +3,7 @@ import  ru.job4j.tracker.models.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 
 public class MenuTracker {
@@ -10,10 +11,12 @@ public class MenuTracker {
     private Input input;
     private Tracker tracker;
     private List<UserAction> actions = new ArrayList<>();
+    private final Consumer<String> output;
 
-    public MenuTracker(Input input, Tracker tracker) {
+    public MenuTracker(Input input, Tracker tracker, Consumer<String> output) {
         this.input = input;
         this.tracker = tracker;
+        this.output = output;
     }
     public int getActionsLentgh() {
         return this.actions.size();
@@ -87,7 +90,8 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             List<Item> items = tracker.findAll();
             for (Item item : items) {
-                System.out.println("ID заявки:" + item.getId() + "      " + "Имя заявки: " + item.name + "      Описание заявки: "  + item.description);
+                //output.accept(String.format("Name: %s| Desc: %s| Id: %s", item.getName(), item.getDescription(), item.getId()));
+                output.accept("ID заявки:" + item.getId() + "      " + "Имя заявки: " + item.name + "      Описание заявки: "  + item.description);
             }
         }
 
