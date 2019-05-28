@@ -1,17 +1,19 @@
 package ru.job4j.bank;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.TreeMap;
+import java.util.*;
+//import java.util.TreeMap;
 
 
 public class Bank {
 
-    private TreeMap<User, ArrayList<Account>> treemap = new TreeMap<>();
+    private HashMap<User, ArrayList<Account>> treemap = new HashMap<>();
+
 
     public void addUser(User user) {
+        if (this.treemap.get(user) == null){
             this.treemap.put(user, new ArrayList<>());
+        }
     }
 
     public void deleteUser(User user) {
@@ -19,7 +21,7 @@ public class Bank {
     }
 
     public void addAccount(User user, Account account) {
-        if (this.treemap.get(user) != null) {
+        if (this.treemap.get(user) != null && this.treemap.get(account) == null) {
             this.treemap.get(user).add(account);
         }
     }
@@ -39,12 +41,43 @@ public class Bank {
         return this.treemap.get(user);
     }
 
+    public Account FindAccount(String passport, String requisites) {
+
+        Account result = null;
+        for (User us: treemap.keySet()) {
+            if (passport == us.getpassport()) {
+               for (Account acc : this.treemap.get(us)) {
+                   if (requisites == acc.getReqs()) {
+                       result = acc;
+                       break;
+                   }
+               }
+               break;
+            }
+        }
+        return result;
+    }
+
     public boolean transfer(User user1, Account account1,
                                  User user2, Account account2, double amount) {
+
         return this.treemap.get(user1).contains(account1)
                 && this.treemap.get(user2).contains(account2)
                 && getActualAccount(user1, account1).transfer(
                 getActualAccount(user2, account2), amount);
+    }
+
+    public boolean transfer(String passport1, String requisites1,
+                            String passport2, String requisites2, double amount) {
+
+        boolean result = false;
+        Account account1 = FindAccount(passport1,requisites1);
+        Account account2 = FindAccount(passport2,requisites2);
+        if (account1 != null && account2 != null) {
+            account1.transfer(account2, amount);
+            result = true;
+        }
+        return result;
     }
 
     public String toString() {
