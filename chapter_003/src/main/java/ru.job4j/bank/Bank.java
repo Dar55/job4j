@@ -21,8 +21,9 @@ public class Bank {
     }
 
     public void addAccount(User user, Account account) {
-        if (this.treemap.get(user) != null && this.treemap.get(account) == null) {
+        if (!this.treemap.get(user).contains(account)) {
             this.treemap.get(user).add(account);
+            System.out.println("аккаунт добавлен");
         }
     }
 
@@ -38,7 +39,11 @@ public class Bank {
     }
 
     public List<Account> getAccounts(User user) {
-        return this.treemap.get(user);
+        if (this.treemap.get(user) != null) {
+            return this.treemap.get(user);
+        } else {
+            return  Collections.emptyList();
+        }
     }
 
     public Account FindAccount(String passport, String requisites) {
