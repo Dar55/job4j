@@ -45,9 +45,9 @@ public class Bank {
 
         Account result = null;
         for (User us: treemap.keySet()) {
-            if (passport == us.getpassport()) {
+            if (passport.equals(us.getpassport())) {
                for (Account acc : this.treemap.get(us)) {
-                   if (requisites == acc.getReqs()) {
+                   if (requisites.equals(acc.getReqs())) {
                        result = acc;
                        break;
                    }
