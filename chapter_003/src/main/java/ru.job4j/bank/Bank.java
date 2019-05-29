@@ -26,10 +26,10 @@ public class Bank {
         }
     }
 
-    private Account getActualAccount(User user, Account account) {
-        ArrayList<Account> list = this.treemap.get(user);
-        return list.get(list.indexOf(account));
-    }
+ //   private Account getActualAccount(User user, Account account) {
+ //       ArrayList<Account> list = this.treemap.get(user);
+ //       return list.get(list.indexOf(account));
+  //  }
 
     public void deleteAccount(User user, Account account) {
         if (this.treemap.get(user) != null) {
@@ -58,14 +58,14 @@ public class Bank {
         return result;
     }
 
-    public boolean transfer(User user1, Account account1,
-                                 User user2, Account account2, double amount) {
-
-        return this.treemap.get(user1).contains(account1)
-                && this.treemap.get(user2).contains(account2)
-                && getActualAccount(user1, account1).transfer(
-                getActualAccount(user2, account2), amount);
-    }
+ //   public boolean transfer(User user1, Account account1,
+ //                               User user2, Account account2, double amount) {
+//
+ //       return this.treemap.get(user1).contains(account1)
+//                && this.treemap.get(user2).contains(account2)
+ //               && getActualAccount(user1, account1).transfer(
+  //              getActualAccount(user2, account2), amount);
+  //  }
 
     public boolean transfer(String passport1, String requisites1,
                             String passport2, String requisites2, double amount) {
