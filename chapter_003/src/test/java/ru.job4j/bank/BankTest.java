@@ -12,19 +12,20 @@ public class BankTest {
     public void whenAddUser() {
         User rst = new User();
         User rst1 = new User();
+        User rst2 = new User();
         rst.setName("Petrov");
         rst1.setName("Morgov");
         rst.setPassport("FB124123");
         rst1.setPassport("FB124155");
         Account account = new Account(100, "CY143400");
         Account account1 = new Account(10, "CY143411");
-        Account account2 = new Account(10, "CY143411");
+        Account account2 = new Account(10, "CY1434112");
         Bank bank = new Bank();
         bank.addUser(rst);
         bank.addUser(rst1);
         bank.addAccount(rst, account);
         bank.addAccount(rst1, account1);
-        bank.addAccount(rst1, account2);
+        bank.addAccount(rst2, account2);
        // bank.transfer(rst, account, rst1, account1, 50);
         bank.transfer("FB14123", "CY143400", "FB124155", "CY143411", 50);
         //bank.getAccounts(rst1);

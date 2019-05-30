@@ -21,7 +21,7 @@ public class Bank {
     }
 
     public void addAccount(User user, Account account) {
-        if (!this.treemap.get(user).contains(account)) {
+        if (this.treemap.get(user) != null && !this.treemap.get(user).contains(account)) {
             this.treemap.get(user).add(account);
             System.out.println("аккаунт добавлен");
         }
