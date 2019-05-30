@@ -18,8 +18,8 @@ public class BankTest {
         rst.setPassport("FB124123");
         rst1.setPassport("FB124155");
         Account account = new Account(100, "CY143400");
-        Account account1 = new Account(10, "CY143411");
-        Account account2 = new Account(10, "CY1434112");
+        Account account1 = new Account(100, "CY143411");
+        Account account2 = new Account(100, "CY1434112");
         Bank bank = new Bank();
         bank.addUser(rst);
         bank.addUser(rst1);
@@ -27,13 +27,13 @@ public class BankTest {
         bank.addAccount(rst1, account1);
         bank.addAccount(rst2, account2);
        // bank.transfer(rst, account, rst1, account1, 50);
-        bank.transfer("FB14123", "CY143400", "FB124155", "CY143411", 50);
+        bank.transfer("FB124123", "CY143400", "FB124155", "CY143411", 200);
         //bank.getAccounts(rst1);
         //bank.deleteAccount(rst1, account);
        // bank.deleteUser(rst1);
        // bank.getAccounts();
-        System.out.println(bank.getAccounts(rst));
-       System.out.println(bank.transfer("FB124123", "CY143400", "FB124155", "CY143411", 50));
+       // System.out.println(bank.getAccounts(rst));
+     //  System.out.println(bank.transfer("FB124123", "CY143400", "FB124155", "CY143411", 50));
        // Assert.assertThat(rst, is(expect));
 
     }

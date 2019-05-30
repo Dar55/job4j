@@ -79,9 +79,10 @@ public class Bank {
         Account account1 = FindAccount(passport1,requisites1);
         Account account2 = FindAccount(passport2,requisites2);
         if (account1 != null && account2 != null) {
-            account1.transfer(account2, amount);
-            result = true;
+            result = account1.transfer(account2, amount);
+
         }
+       // System.out.println(result);
         return result;
     }
 
