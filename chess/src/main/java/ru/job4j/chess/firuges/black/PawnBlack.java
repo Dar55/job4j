@@ -1,6 +1,6 @@
 package ru.job4j.chess.firuges.black;
 
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+//import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 
